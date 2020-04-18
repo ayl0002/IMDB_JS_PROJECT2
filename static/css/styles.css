@@ -217,13 +217,13 @@ nav {
 
 .activities-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     grid-gap: 2.5rem;
 }
 
 .activities-grid-item {
     height: 40rem;
-    padding: 5rem;
+    padding: 1rem;
     color: #fafafa;
     position: relative;
     display: flex;
@@ -256,6 +256,11 @@ nav {
 .sql {
     background: url("./static/images/oz.gif") center no-repeat;
 }
+
+.movies{
+    background: url("./static/images/yoda.gif") center no-repeat;
+}
+
 
 
 
