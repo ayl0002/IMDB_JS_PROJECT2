@@ -32,7 +32,7 @@ Steps to Run Project:
     - be sure to remove the serial column from the columns to be imported or the import will fail.
     - headers toggled to yes and delimiter to ,
 
-6) Run lines 84 to 108 in IMDB.SQL
+6) Run lines 84 to 111 in IMDB.SQL
 
 7) updated user= and password= in lines 62, 69 and 76 of the app.py to match the user name and password of your pgadmin. 
 
