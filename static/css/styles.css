@@ -47,6 +47,17 @@ header {
     z-index: 1;
 }
 
+.top10 {
+    padding: 2.5rem 0;
+    text-align: center;
+    color: rgba(0,0,0,.7);
+}
+#myDiv {
+  width:70%;
+  margin-left:15%;
+  margin-right:15%;
+}
+
 .container {
     width: 100%;
     max-width: 98rem;

@@ -64,33 +64,24 @@ console.log("top10count", top10Count);
 var trace = {
   x: top10Count.map(actor => actor.actorName),
   y: top10Count.map(actor => actor.actorCount),
-  text: [
-  'Facebook Likes: 22,000',
-  'Facebook Likes: 11,000',
-  'Facebook Likes: 40,000',
-  'Facebook Likes: 13,000',
-  'Facebook Likes: 13,000',
-  'Facebook Likes: 12,000',
-  'Facebook Likes: 14,000',
-  'Facebook Likes: 11,000',
-  'Facebook Likes: 12,000',
-  'Facebook Likes: 13,000'],
+  text: `Facebook Popularity: ${actorLikes}`,
   marker: {
     color:"#3CBA9F"},
   type: "bar",
+  // orientation: "h"
 };
+
 console.log(actor1Name)
+
 var data = [trace];
+
 // 7. Define our plot layout
 var layout = {
-  title: "Top 10 Actors Cast in Movies",
-    font: {
-      // family: 'Courier New, monospace',
-      // size: 18,
-      color: '#7F7F7F'
-    },
-  xaxis: {title: "Actors", tickangle:0},
+  title: "Top 10 Actors",
+  xaxis: {title: "Lead Actor"},
   yaxis: {title: "# of Movies"}
 };
+
 Plotly.newPlot('myDiv', data, layout)
+
 });
