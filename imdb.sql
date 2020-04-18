@@ -61,6 +61,7 @@ CREATE TABLE "Budget_Table" (
     "gross" FLOAT(2)   NULL,
    	"budget" FLOAT(2)   NULL,
     "imdb_score" FLOAT(2)   NULL,
+	"RoI" FLOAT(2) NULL,
     CONSTRAINT "pk_Budget_Table" PRIMARY KEY (
         "Serial"
      )
@@ -81,8 +82,8 @@ CREATE TABLE "Capital_Cities" (
 --Upload Capital Cities using country-capitals-final.csv--
 
 --Populate Budget Table from Master--
-INSERT INTO public."Budget_Table" ("movie_title","gross","budget","imdb_score")
-SELECT "movie_title","gross","budget","imdb_score" FROM public."IMDB5000";
+INSERT INTO public."Budget_Table" ("movie_title","gross","budget","imdb_score","RoI")
+SELECT "movie_title","gross","budget","imdb_score",(("gross" - "budget")/"budget")*100 AS "RoI" FROM public."IMDB5000";
 
 --Populate Map Table from Master--
 INSERT INTO public."Movie_Map" ("movie_title","gross","director_name","actor_1_name","actor_2_name","actor_3_name","country","imdb_score","budget")
@@ -101,12 +102,13 @@ FROM public."Movie_Map" A
 LEFT JOIN (SELECT "country",sum(budget) AS "total_budget" from public."Movie_Map" group by "country") B
 	ON A."country"= B."country"
 LEFT JOIN (SELECT "country",count(movie_title) AS "total_movies" from public."Movie_Map" group by "country") C
-	ON A."country" = C."country"
+	ON A."country" = C."country"	
 LEFT JOIN (SELECT "country",avg(imdb_score) AS "avg_imdb"  from public."Movie_Map" group by "country") D
 	ON A."country" = D."country"
 RIGHT JOIN public."Capital_Cities" E
 	ON A."country" = E."country";
 
+SELECT * INTO "IMDB5000_2" FROM public."IMDB5000";
 
 
 

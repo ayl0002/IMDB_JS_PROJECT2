@@ -40,6 +40,11 @@ def page3():
 
     return render_template("page3.html")  
 
+@app.route("/page4")
+def page4():
+
+    return render_template("page4.html")      
+
 # @app.route("/maps")
 # def maps():
 #
@@ -77,6 +82,13 @@ def data3():
     data3 = pd.read_sql('''SELECT * FROM public."Movie_Map_Final"''', con=con)
     data3 = data3.to_dict(orient="records")
     return jsonify(data3) 
+
+@app.route("/data4")
+def data4():
+    con = psycopg2.connect("host='localhost' dbname='Netflix' user='postgres' password='R@dium.33'")
+    data4 = pd.read_sql('''select * from  public."IMDB5000_2"''', con=con)
+    data4 = data4.to_json(orient='records',date_format='iso')
+    return jsonify(json.loads(data4))
 
 if __name__ == "__main__":
     app.run(debug=True)
